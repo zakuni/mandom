@@ -16,6 +16,7 @@
       document.querySelector('#timer').innerHTML = timer.getTimeValues().toString();
     });
     timer.addEventListener('targetAchieved', function (e) {
+      document.querySelector('#timer').style.color = '#dd0000'
       timer.stop();
       timer.start({
         countdown: false,
@@ -26,12 +27,22 @@
 
     var socket = io();
     socket.on('time', function(msg){
+      document.querySelector('#timer').style.color = '#000000'
       timer.stop();
-      timer.start({countdown: true, startValues: [0,msg-0,0,0,0]});
+      timer.start({countdown: true, startValues: msg});
     });
-    socket.emit('time', '10');
   </script>
 </head>
 <body>
   <div id='timer'></div>
+  <form id="timeForm">
+    <input type="text" id="time" name="time" />
+    <input type="submit" value="start"></input>
+  </form>
+  <script type="text/javascript">
+    document.getElementById("timeForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      socket.emit('time', [0,0,document.getElementById("time").value-0,0,0]);
+    });
+  </script>
 </body>
