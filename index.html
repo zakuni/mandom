@@ -1,3 +1,4 @@
+<script src="/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="node_modules/easytimer.js/dist/easytimer.js"></script>
 <script type="text/javascript">
   const timer = new Timer();
@@ -13,5 +14,14 @@
       target: null // target is set to avoid targetAchieved event to be dispatched.
     });
   });
+
+  var socket = io();
+  socket.on('time', function(msg){
+    timer.stop();
+    timer.start({countdown: true, startValues: [0,msg-0,0,0,0]});
+  });
+  socket.emit('time', '10');
 </script>
-<div id='timer'></div>
+<body>
+  <div id='timer'></div>
+</body>
