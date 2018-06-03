@@ -1,9 +1,17 @@
 <script type="text/javascript" src="node_modules/easytimer.js/dist/easytimer.js"></script>
 <script type="text/javascript">
-  var timer = new Timer();
-  timer.start({countdown: true, startValues: [0,0,1,0,0]});
+  const timer = new Timer();
+  timer.start({countdown: true, startValues: [0,3,0,0,0]});
   timer.addEventListener('secondsUpdated', function (e) {
     document.querySelector('#timer').innerHTML = timer.getTimeValues().toString();
+  });
+  timer.addEventListener('targetAchieved', function (e) {
+    timer.stop();
+    timer.start({
+      countdown: false,
+      startValues: [0,0,0,0,0],
+      target: [0,0,0,0,1] // target is set to avoid targetAchieved event to be dispatched.
+    });
   });
 </script>
 <div id='timer'></div>
