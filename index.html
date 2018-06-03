@@ -1,0 +1,9 @@
+<script type="text/javascript" src="node_modules/easytimer.js/dist/easytimer.js"></script>
+<script type="text/javascript">
+  var timer = new Timer();
+  timer.start({countdown: true, startValues: [0,0,1,0,0]});
+  timer.addEventListener('secondsUpdated', function (e) {
+    document.querySelector('#timer').innerHTML = timer.getTimeValues().toString();
+  });
+</script>
+<div id='timer'></div>
