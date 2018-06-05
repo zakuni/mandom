@@ -2,6 +2,7 @@
   "scripts": {
     "dev": "node index.js",
     "build": "next build",
+    "heroku-postbuild": "yarn build",
     "start": "NODE_ENV=production node index.js"
   },
   "dependencies": {
