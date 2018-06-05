@@ -18,7 +18,9 @@ io.on('connection', function(socket){
 });
 
 nextApp.prepare().then(() => {
-  app.use(express.static(__dirname + "/"));
+  app.get('*', (req, res) => {
+    return nextHandler(req, res);
+  });
 
   http.listen(port, (err) => {
     if (err) throw err;
