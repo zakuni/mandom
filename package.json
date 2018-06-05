@@ -1,9 +1,9 @@
 {
   "scripts": {
-    "dev": "node index.js",
+    "dev": "node server.js",
     "build": "next build",
     "heroku-postbuild": "yarn build",
-    "start": "NODE_ENV=production node index.js"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "easytimer.js": "^2.2.2",
