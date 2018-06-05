@@ -4,7 +4,10 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 5000
 
-app.use(express.static(__dirname + "/"))
+const next = require('next');
+const dev = process.env.NODE_ENV !== 'production';
+const nextApp = next({ dev });
+const nextHandler = nextApp.getRequestHandler();
 
 io.on('connection', function(socket){
   console.log('a user connected');
@@ -14,6 +17,13 @@ io.on('connection', function(socket){
   });
 });
 
-http.listen(port)
+nextApp.prepare().then(() => {
+  app.use(express.static(__dirname + "/"));
 
-console.log("http server listening on %d", port)
+  http.listen(port, (err) => {
+    if (err) throw err;
+    console.log("http server listening on %d", port);
+  });
+});
+
+
