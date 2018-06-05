@@ -18,11 +18,7 @@
     timer.addEventListener('targetAchieved', function (e) {
       document.querySelector('#timer').style.color = '#dd0000'
       timer.stop();
-      timer.start({
-        countdown: false,
-        startValues: [0,0,0,0,0],
-        target: null // target is set to avoid targetAchieved event to be dispatched.
-      });
+      timer.start();
     });
 
     var socket = io();

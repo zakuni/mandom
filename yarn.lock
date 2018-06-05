@@ -122,9 +122,9 @@ destroy@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
 
-easytimer.js@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/easytimer.js/-/easytimer.js-2.2.1.tgz#030cb1e063fc10938c11f0078943c5ca9fced399"
+easytimer.js@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/easytimer.js/-/easytimer.js-2.2.2.tgz#7e4851d8a59cbf5c2f227902f1c7e7d2ecf9e474"
 
 ee-first@1.1.1:
   version "1.1.1"
